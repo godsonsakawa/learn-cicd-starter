@@ -1,22 +1,25 @@
+# Name of the workflow
 name: ci
 
+# Define when the workflow should run
 on:
   pull_request:
-    branches: [main]
+    branches: [main] # Trigger on pull requests to the main branch
 
+# Define the jobs that make up the workflow
 jobs:
   tests:
-    name: Tests
-    runs-on: ubuntu-latest
+    name: Tests # Name of the job
+    runs-on: ubuntu-latest # Specify the runner environment
 
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
+    steps: # List of steps to execute in the job
+      - name: Check out code # Step to check out the repository code
+        uses: actions/checkout@v4 # Use the checkout action to clone the repo
 
-      - name: Set up Go
-        uses: actions/setup-go@v5
+      - name: Set up Go # Step to set up the Go environment
+        uses: actions/setup-go@v5 # Use the setup-go action
         with:
-          go-version: "1.23.0"
+          go-version: "1.23.0" # Specify the version of Go to install
 
-      - name: check Go version
-        run: go version
+      - name: Check Go version # Step to check the installed Go version
+        run: go version # Run the command to print the Go version
